@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="./bower_components/bootstrap/dist/css/bootstrap.min.css" />
+  <link rel="stylesheet" href="./css/global.css" />
+</head>
+<body>
+  <div id="header"></div>
+
+  <div class="starter-template">
+    <h1>TimeItem</h1>
+    <br>
+    <br>
+    <br>
+    <br>
+    <p class="lead">
+      Time Recorder.
+      <br>
+      Record your time here and meet the better yourself.
+    </p>
+    <form action="/uploadFile" method="POST" enctype="multipart/form-data">
+      <input type="file" name="file">
+      <input type="submit" value="Upload"> 
+    </form>
+    <br>
+  </div>
+
+  
+  <footer class="footer text-center"><p>&copy; 2016 TimeItem, Inc.</p></footer>
+
+  <script type="text/javascript" src="./bower_components/jquery/dist/jquery.min.js"></script>
+  <script type="text/javascript" src="./bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+  <script type="text/javascript" src="./app/common/page-layout-init.js"></script>
+  <script> 
+    // $(function(){
+    //   $("#header").load("./view/header.html"); 
+    //   // $("#footer").load("footer.html"); 
+    // });
+  </script>
+</body>
+</html>
