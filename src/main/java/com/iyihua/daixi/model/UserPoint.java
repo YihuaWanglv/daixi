@@ -10,6 +10,8 @@ public class UserPoint {
 	@GeneratedValue
     private Integer upid;
 	@Column
+    private Integer uid;
+	@Column
     private Integer pid;
 	@Column
     private String detail;
@@ -57,4 +59,13 @@ public class UserPoint {
     public void setScore(Byte score) {
         this.score = score;
     }
+
+	public Integer getUid() {
+		return uid;
+	}
+
+	public void setUid(Integer uid) {
+		this.uid = uid;
+	}
+    
 }
