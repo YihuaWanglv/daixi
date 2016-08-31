@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.iyihua.daixi.mapper.PointMapper" >
+  <resultMap id="BaseResultMap" type="com.iyihua.daixi.model.Point" >
+    <id column="pid" property="pid" jdbcType="INTEGER" />
+    <result column="iid" property="iid" jdbcType="INTEGER" />
+    <result column="description" property="description" jdbcType="VARCHAR" />
+    <result column="type" property="type" jdbcType="TINYINT" />
+    <result column="scores" property="scores" jdbcType="TINYINT" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    pid, iid, description, type, scores
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from point
+    where pid = #{pid,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from point
+    where pid = #{pid,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.iyihua.daixi.model.Point" >
+    insert into point (pid, iid, description, 
+      type, scores)
+    values (#{pid,jdbcType=INTEGER}, #{iid,jdbcType=INTEGER}, #{description,jdbcType=VARCHAR}, 
+      #{type,jdbcType=TINYINT}, #{scores,jdbcType=TINYINT})
+  </insert>
+  <insert id="insertSelective" parameterType="com.iyihua.daixi.model.Point" >
+    insert into point
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="pid != null" >
+        pid,
+      </if>
+      <if test="iid != null" >
+        iid,
+      </if>
+      <if test="description != null" >
+        description,
+      </if>
+      <if test="type != null" >
+        type,
+      </if>
+      <if test="scores != null" >
+        scores,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="pid != null" >
+        #{pid,jdbcType=INTEGER},
+      </if>
+      <if test="iid != null" >
+        #{iid,jdbcType=INTEGER},
+      </if>
+      <if test="description != null" >
+        #{description,jdbcType=VARCHAR},
+      </if>
+      <if test="type != null" >
+        #{type,jdbcType=TINYINT},
+      </if>
+      <if test="scores != null" >
+        #{scores,jdbcType=TINYINT},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.iyihua.daixi.model.Point" >
+    update point
+    <set >
+      <if test="iid != null" >
+        iid = #{iid,jdbcType=INTEGER},
+      </if>
+      <if test="description != null" >
+        description = #{description,jdbcType=VARCHAR},
+      </if>
+      <if test="type != null" >
+        type = #{type,jdbcType=TINYINT},
+      </if>
+      <if test="scores != null" >
+        scores = #{scores,jdbcType=TINYINT},
+      </if>
+    </set>
+    where pid = #{pid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.iyihua.daixi.model.Point" >
+    update point
+    set iid = #{iid,jdbcType=INTEGER},
+      description = #{description,jdbcType=VARCHAR},
+      type = #{type,jdbcType=TINYINT},
+      scores = #{scores,jdbcType=TINYINT}
+    where pid = #{pid,jdbcType=INTEGER}
+  </update>
+</mapper>

@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE generatorConfiguration PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN" "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd" >
+<generatorConfiguration>
+    <classPathEntry
+        location="D:\libs\maven_lib\mysql\mysql-connector-java\5.1.6\mysql-connector-java-5.1.6.jar" />
+    <context id="context1" targetRuntime="MyBatis3">
+    	<commentGenerator> 
+            <!-- 是否去除自动生成的注释 true：是 ： false:否 --> 
+            <property name="suppressAllComments" value="true" /> 
+        </commentGenerator>
+        <jdbcConnection driverClass="com.mysql.jdbc.Driver" connectionURL="jdbc:mysql://localhost:3306/daixi" userId="root" password="root" />
+        <javaModelGenerator targetPackage="com.iyihua.daixi.model" targetProject="D:/projects/daixi/src/main/java" />
+        <sqlMapGenerator targetPackage="mapper" targetProject="D:/projects/daixi/src/main/resources" />
+        <javaClientGenerator targetPackage="com.iyihua.daixi.mapper" targetProject="D:/projects/daixi/src/main/java" type="XMLMAPPER" />
+        <table schema="daixi" tableName="item"  enableCountByExample="false"  
+                enableDeleteByExample="false" enableSelectByExample="false" enableUpdateByExample="false"/>
+        <table schema="daixi" tableName="point"  enableCountByExample="false"  
+                enableDeleteByExample="false" enableSelectByExample="false" enableUpdateByExample="false"/>
+        <table schema="daixi" tableName="role"  enableCountByExample="false"  
+                enableDeleteByExample="false" enableSelectByExample="false" enableUpdateByExample="false"/>
+        <table schema="daixi" tableName="user_item"  enableCountByExample="false"  
+                enableDeleteByExample="false" enableSelectByExample="false" enableUpdateByExample="false"/>
+        <table schema="daixi" tableName="user_point"  enableCountByExample="false"  
+                enableDeleteByExample="false" enableSelectByExample="false" enableUpdateByExample="false"/>
+    </context>
+</generatorConfiguration>

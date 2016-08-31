@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.iyihua.daixi.mapper.UserItemMapper" >
+  <resultMap id="BaseResultMap" type="com.iyihua.daixi.model.UserItem" >
+    <id column="ilid" property="ilid" jdbcType="INTEGER" />
+    <result column="uid" property="uid" jdbcType="INTEGER" />
+    <result column="iid" property="iid" jdbcType="INTEGER" />
+    <result column="level" property="level" jdbcType="TINYINT" />
+    <result column="point_level" property="pointLevel" jdbcType="TINYINT" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    ilid, uid, iid, level, point_level
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from user_item
+    where ilid = #{ilid,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from user_item
+    where ilid = #{ilid,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.iyihua.daixi.model.UserItem" >
+    insert into user_item (ilid, uid, iid, 
+      level, point_level)
+    values (#{ilid,jdbcType=INTEGER}, #{uid,jdbcType=INTEGER}, #{iid,jdbcType=INTEGER}, 
+      #{level,jdbcType=TINYINT}, #{pointLevel,jdbcType=TINYINT})
+  </insert>
+  <insert id="insertSelective" parameterType="com.iyihua.daixi.model.UserItem" >
+    insert into user_item
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="ilid != null" >
+        ilid,
+      </if>
+      <if test="uid != null" >
+        uid,
+      </if>
+      <if test="iid != null" >
+        iid,
+      </if>
+      <if test="level != null" >
+        level,
+      </if>
+      <if test="pointLevel != null" >
+        point_level,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="ilid != null" >
+        #{ilid,jdbcType=INTEGER},
+      </if>
+      <if test="uid != null" >
+        #{uid,jdbcType=INTEGER},
+      </if>
+      <if test="iid != null" >
+        #{iid,jdbcType=INTEGER},
+      </if>
+      <if test="level != null" >
+        #{level,jdbcType=TINYINT},
+      </if>
+      <if test="pointLevel != null" >
+        #{pointLevel,jdbcType=TINYINT},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.iyihua.daixi.model.UserItem" >
+    update user_item
+    <set >
+      <if test="uid != null" >
+        uid = #{uid,jdbcType=INTEGER},
+      </if>
+      <if test="iid != null" >
+        iid = #{iid,jdbcType=INTEGER},
+      </if>
+      <if test="level != null" >
+        level = #{level,jdbcType=TINYINT},
+      </if>
+      <if test="pointLevel != null" >
+        point_level = #{pointLevel,jdbcType=TINYINT},
+      </if>
+    </set>
+    where ilid = #{ilid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.iyihua.daixi.model.UserItem" >
+    update user_item
+    set uid = #{uid,jdbcType=INTEGER},
+      iid = #{iid,jdbcType=INTEGER},
+      level = #{level,jdbcType=TINYINT},
+      point_level = #{pointLevel,jdbcType=TINYINT}
+    where ilid = #{ilid,jdbcType=INTEGER}
+  </update>
+</mapper>
