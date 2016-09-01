@@ -4,10 +4,16 @@
         "http://mybatis.org/dtd/mybatis-3-config.dtd">
 <configuration>
     <typeAliases>
-        <package name="com.iyihua.itimes.model"/>
+        <package name="com.iyihua.daixi.model"/>
     </typeAliases>
     <mappers>
+    	<!-- 
         <mapper resource="mapper/ItemMapper.xml"/>
-        <mapper resource="mapper/ReportMapper.xml"/>
+        <mapper resource="mapper/PointMapper.xml"/>
+        <mapper resource="mapper/RoleMapper.xml"/>
+        <mapper resource="mapper/UserItemMapper.xml"/>
+        <mapper resource="mapper/UserMapper.xml"/>
+        <mapper resource="mapper/UserPointMapper.xml"/>
+    	 -->
     </mappers>
 </configuration>

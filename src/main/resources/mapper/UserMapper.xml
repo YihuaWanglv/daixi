@@ -16,7 +16,7 @@
 		<result column="code" property="code" />
 	</resultMap>
 
-	<update id="updateUserSelective" parameterType="com.iyihua.itimes.model.User">
+	<update id="updateUserSelective" parameterType="com.iyihua.daixi.model.User">
 		update user
 		<set>
 			<if test="name != null">name=#{name},</if>

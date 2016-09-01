@@ -1,7 +1,9 @@
 package com.iyihua.daixi.mapper;
 
-import com.iyihua.daixi.model.UserItem;
+import org.apache.ibatis.annotations.Mapper;
 
+import com.iyihua.daixi.model.UserItem;
+@Mapper
 public interface UserItemMapper {
     int deleteByPrimaryKey(Integer ilid);
 

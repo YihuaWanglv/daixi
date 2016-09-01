@@ -1,7 +1,9 @@
 package com.iyihua.daixi.mapper;
 
-import com.iyihua.daixi.model.Role;
+import org.apache.ibatis.annotations.Mapper;
 
+import com.iyihua.daixi.model.Role;
+@Mapper
 public interface RoleMapper {
     int deleteByPrimaryKey(Integer rid);
 

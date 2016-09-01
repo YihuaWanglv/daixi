@@ -2,43 +2,43 @@ package com.iyihua.daixi.model;
 
 import java.io.Serializable;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
+//import javax.persistence.Column;
+//import javax.persistence.Entity;
+//import javax.persistence.GeneratedValue;
+//import javax.persistence.Id;
 
-@Entity
+//@Entity
 public class User implements Serializable {
 
 	private static final long serialVersionUID = 327199294326750001L;
 
-	@Id
-	@GeneratedValue
+//	@Id
+//	@GeneratedValue
 	private Long id;
 
-	@Column(nullable = false)
+//	@Column(nullable = false)
 	private String name;
 
-	@Column(nullable = false)
+//	@Column(nullable = false)
 	private String password;
 
-	@Column(nullable = false)
+//	@Column(nullable = false)
 	private Integer type;
 
-	@Column(nullable = false)
+//	@Column(nullable = false)
 	private String salt;
 
-	@Column(nullable = false)
+//	@Column(nullable = false)
 	private String email;
-	@Column
+//	@Column
 	private String mobile;
-	@Column()
+//	@Column()
 	private Integer deleted;
-	@Column()
+//	@Column()
 	private Integer enable;
-	@Column()
+//	@Column()
 	private String code;
-	@Column
+//	@Column
 	private long userConfigId;
 	public User() {
 		super();

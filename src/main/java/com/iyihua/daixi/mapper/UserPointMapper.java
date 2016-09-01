@@ -1,7 +1,9 @@
 package com.iyihua.daixi.mapper;
 
-import com.iyihua.daixi.model.UserPoint;
+import org.apache.ibatis.annotations.Mapper;
 
+import com.iyihua.daixi.model.UserPoint;
+@Mapper
 public interface UserPointMapper {
     int deleteByPrimaryKey(Integer upid);
 
