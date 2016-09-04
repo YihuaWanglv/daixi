@@ -1,20 +1,20 @@
 package com.iyihua.daixi.model;
 
-//import javax.persistence.Column;
-//import javax.persistence.GeneratedValue;
-//import javax.persistence.Id;
+import javax.persistence.Column;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
 
 public class Point {
-//	@Id
-//	@GeneratedValue
+	@Id
+	@GeneratedValue
     private Integer pid;
-//	@Column
+	@Column
     private Integer iid;
-//	@Column
+	@Column
     private String description;
-//	@Column
+	@Column
     private Byte type;
-//	@Column
+	@Column
     private Byte scores;
 
     public Integer getPid() {

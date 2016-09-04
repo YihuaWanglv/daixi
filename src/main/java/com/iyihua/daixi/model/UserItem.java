@@ -1,21 +1,21 @@
 package com.iyihua.daixi.model;
 
-//import javax.persistence.Column;
-//import javax.persistence.GeneratedValue;
-//import javax.persistence.Id;
+import javax.persistence.Column;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
 
 public class UserItem {
 	
-//	@Id
-//	@GeneratedValue
+	@Id
+	@GeneratedValue
     private Integer ilid;
-//	@Column
+	@Column
     private Integer uid;
-//	@Column
+	@Column
     private Integer iid;
-//	@Column
+	@Column
     private Byte level;
-//	@Column
+	@Column
     private Byte pointLevel;
 
     public Integer getIlid() {

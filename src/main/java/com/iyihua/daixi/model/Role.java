@@ -1,16 +1,16 @@
 package com.iyihua.daixi.model;
 
-//import javax.persistence.Column;
-//import javax.persistence.GeneratedValue;
-//import javax.persistence.Id;
+import javax.persistence.Column;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
 
 public class Role {
-//	@Id
-//	@GeneratedValue
+	@Id
+	@GeneratedValue
     private Integer rid;
-//	@Column
+	@Column
     private String roleName;
-//	@Column
+	@Column
     private Boolean deleted;
 
     public Integer getRid() {

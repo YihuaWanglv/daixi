@@ -1,23 +1,23 @@
 package com.iyihua.daixi.model;
 
-//import javax.persistence.Column;
-//import javax.persistence.GeneratedValue;
-//import javax.persistence.Id;
+import javax.persistence.Column;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
 
 public class UserPoint {
 	
-//	@Id
-//	@GeneratedValue
+	@Id
+	@GeneratedValue
     private Integer upid;
-//	@Column
+	@Column
     private Integer uid;
-//	@Column
+	@Column
     private Integer pid;
-//	@Column
+	@Column
     private String detail;
-//	@Column
+	@Column
     private Byte option;
-//	@Column
+	@Column
     private Byte score;
 
     public Integer getUpid() {
