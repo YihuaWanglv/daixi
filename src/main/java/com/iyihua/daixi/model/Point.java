@@ -1,9 +1,11 @@
 package com.iyihua.daixi.model;
 
 import javax.persistence.Column;
+import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 
+@Entity
 public class Point {
 	@Id
 	@GeneratedValue
@@ -13,9 +15,9 @@ public class Point {
 	@Column
     private String description;
 	@Column
-    private Byte type;
+    private Integer type;
 	@Column
-    private Byte scores;
+    private Integer scores;
 
     public Integer getPid() {
         return pid;
@@ -41,19 +43,19 @@ public class Point {
         this.description = description;
     }
 
-    public Byte getType() {
+    public Integer getType() {
         return type;
     }
 
-    public void setType(Byte type) {
+    public void setType(Integer type) {
         this.type = type;
     }
 
-    public Byte getScores() {
+    public Integer getScores() {
         return scores;
     }
 
-    public void setScores(Byte scores) {
+    public void setScores(Integer scores) {
         this.scores = scores;
     }
 }

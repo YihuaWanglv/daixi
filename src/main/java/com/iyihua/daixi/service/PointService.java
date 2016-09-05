@@ -4,29 +4,26 @@ import java.util.List;
 
 import org.springframework.stereotype.Service;
 
-import com.iyihua.daixi.model.Item;
-import com.iyihua.daixi.service.remote.ItemRemote;
-
-
-
+import com.iyihua.daixi.model.Point;
+import com.iyihua.daixi.service.remote.PointRemote;
 
 @Service
-public class ItemService implements ItemRemote {
+public class PointService implements PointRemote {
 
 	@Override
-	public Item getById(Integer id) {
+	public Point getById(Integer id) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public void save(Item item) {
+	public void save(Point point) {
 		// TODO Auto-generated method stub
 		
 	}
 
 	@Override
-	public List<Item> getListByParentId(Integer id) {
+	public List<Point> getListByItemId(Integer id) {
 		// TODO Auto-generated method stub
 		return null;
 	}

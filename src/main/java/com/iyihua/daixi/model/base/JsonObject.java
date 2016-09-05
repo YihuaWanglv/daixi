@@ -5,12 +5,17 @@ import java.io.Serializable;
 public class JsonObject implements Serializable {
 
 	private static final long serialVersionUID = 5636518400415762281L;
-	private int status = 1;
-	private String message;
+	private int status = 0;
+	private String message = "";
 	private Object data;
 
 	public JsonObject() {
 		super();
+	}
+	
+	public JsonObject(Object data) {
+		super();
+		this.data = data;
 	}
 
 	public JsonObject(int status, String message, Object data) {
