@@ -7,9 +7,10 @@
     <result column="description" property="description" jdbcType="VARCHAR" />
     <result column="type" property="type" jdbcType="TINYINT" />
     <result column="scores" property="scores" jdbcType="TINYINT" />
+    <result column="title" property="title" jdbcType="VARCHAR" />
   </resultMap>
   <sql id="Base_Column_List" >
-    pid, iid, description, type, scores
+    pid, iid, description, type, scores, title
   </sql>
   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
     select 
@@ -23,9 +24,9 @@
   </delete>
   <insert id="insert" parameterType="com.iyihua.daixi.model.Point" >
     insert into point (pid, iid, description, 
-      type, scores)
+      type, scores, title)
     values (#{pid,jdbcType=INTEGER}, #{iid,jdbcType=INTEGER}, #{description,jdbcType=VARCHAR}, 
-      #{type,jdbcType=TINYINT}, #{scores,jdbcType=TINYINT})
+      #{type,jdbcType=TINYINT}, #{scores,jdbcType=TINYINT}, #{title,jdbcType=VARCHAR})
   </insert>
   <insert id="insertSelective" parameterType="com.iyihua.daixi.model.Point" >
     insert into point
@@ -45,6 +46,9 @@
       <if test="scores != null" >
         scores,
       </if>
+      <if test="title != null" >
+        title,
+      </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides="," >
       <if test="pid != null" >
@@ -61,6 +65,9 @@
       </if>
       <if test="scores != null" >
         #{scores,jdbcType=TINYINT},
+      </if>
+      <if test="title != null" >
+        #{title,jdbcType=VARCHAR},
       </if>
     </trim>
   </insert>
@@ -79,6 +86,9 @@
       <if test="scores != null" >
         scores = #{scores,jdbcType=TINYINT},
       </if>
+      <if test="title != null" >
+        title = #{title,jdbcType=VARCHAR},
+      </if>
     </set>
     where pid = #{pid,jdbcType=INTEGER}
   </update>
@@ -88,6 +98,42 @@
       description = #{description,jdbcType=VARCHAR},
       type = #{type,jdbcType=TINYINT},
       scores = #{scores,jdbcType=TINYINT}
+      title = #{title,jdbcType=VARCHAR}
     where pid = #{pid,jdbcType=INTEGER}
   </update>
+  
+  <sql id="findByParamsCommon">
+		from point i where 1=1
+		<if test="iid != null">
+			and i.iid = #{iid}
+		</if>
+		<if test="description != null">
+			and i.description = #{description}
+		</if>
+		<if test="type != null">
+			and i.type = #{type}
+		</if>
+		<if test="scores != null">
+			and i.scores = #{scores}
+		</if>
+		<if test="title != null">
+			and i.title = #{title}
+		</if>
+	</sql>
+	<select id="findByParams" parameterType="com.iyihua.daixi.model.Point"
+		resultMap="BaseResultMap">
+		select
+		i.*
+		<include refid="findByParamsCommon" />
+		<!-- 
+		<if test="start != null and size != null and page != null and page > 0 and start > -1">
+			limit #{start}, #{size}
+		</if>
+		 -->
+	</select>
+	<select id="countByParams" parameterType="com.iyihua.daixi.model.Point"
+		resultType="Integer">
+		select count(*)
+		<include refid="findByParamsCommon" />
+	</select>
 </mapper>

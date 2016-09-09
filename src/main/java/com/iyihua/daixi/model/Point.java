@@ -18,6 +18,8 @@ public class Point {
     private Integer type;
 	@Column
     private Integer scores;
+	@Column
+    private String title;
 
     public Integer getPid() {
         return pid;
@@ -58,4 +60,14 @@ public class Point {
     public void setScores(Integer scores) {
         this.scores = scores;
     }
+
+	public String getTitle() {
+		return title;
+	}
+
+	public void setTitle(String title) {
+		this.title = title;
+	}
+    
+    
 }

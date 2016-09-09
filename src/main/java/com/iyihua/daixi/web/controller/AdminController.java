@@ -31,14 +31,14 @@ public class AdminController {
 			iid = 0;
 		}
 		List<Item> items = itemService.getListByParentId(iid);
-		return new JsonObject(items);
+		return null;
 	}
 	
 	@RequestMapping(value = "/item", method = RequestMethod.POST)
 	@ResponseBody
 	public JsonObject addPoint(Item item) {
 		
-		itemService.save(item);
+		itemService.save(item, null);
 		return new JsonObject();
 	}
 	
@@ -48,7 +48,7 @@ public class AdminController {
 		
 		item.setIid(iid);
 		
-		itemService.save(item);
+		itemService.save(item, false);
 		return new JsonObject();
 	}
 	
@@ -56,14 +56,14 @@ public class AdminController {
 	@ResponseBody
 	public JsonObject listPoint(@PathVariable Integer iid) {
 		List<Point> points = pointService.getListByItemId(iid);
-		return new JsonObject(points);
+		return null;
 	}
 	
 	@RequestMapping(value = "/point", method = RequestMethod.POST)
 	@ResponseBody
 	public JsonObject addPoint(Point point) {
 		
-		pointService.save(point);
+		pointService.save(point, null);
 		return new JsonObject();
 	}
 	
@@ -73,7 +73,7 @@ public class AdminController {
 		
 		point.setPid(pid);
 		
-		pointService.save(point);
+		pointService.save(point, false);
 		return new JsonObject();
 	}
 

@@ -14,7 +14,10 @@ public class User implements Serializable {
 
 	@Id
 	@GeneratedValue
-	private Long id;
+	private Long uid;
+	
+	@Column(nullable = false)
+	private Integer rid;
 
 	@Column(nullable = false)
 	private String name;
@@ -38,20 +41,20 @@ public class User implements Serializable {
 	private Integer enable;
 	@Column()
 	private String code;
-	@Column
-	private long userConfigId;
+//	@Column
+//	private long userConfigId;
 	public User() {
 		super();
 	}
 
-	public User(Long id, String name, String password, Integer type) {
+	public User(Long uid, String name, String password, Integer type) {
 		super();
 		this.name = name;
 	}
 
-	public User(Long id, String name, String password, Integer type, String salt, String email, String mobile, Integer deleted, Integer enable, String code) {
+	public User(Long uid, String name, String password, Integer type, String salt, String email, String mobile, Integer deleted, Integer enable, String code) {
 		super();
-		this.id = id;
+		this.uid = uid;
 		this.name = name;
 		this.password = password;
 		this.type = type;
@@ -67,12 +70,20 @@ public class User implements Serializable {
 		return this.name;
 	}
 
-	public Long getId() {
-		return id;
+	public Long getUid() {
+		return uid;
 	}
-
-	public void setId(Long id) {
-		this.id = id;
+	
+	public void setUid(Long uid) {
+		this.uid = uid;
+	}
+	
+	public Integer getRid() {
+		return rid;
+	}
+	
+	public void setRid(Integer rid) {
+		this.rid = rid;
 	}
 
 	public Integer getType() {
@@ -143,17 +154,17 @@ public class User implements Serializable {
 		this.code = code;
 	}
 
-	public long getUserConfigId() {
-		return userConfigId;
-	}
-
-	public void setUserConfigId(long userConfigId) {
-		this.userConfigId = userConfigId;
-	}
+//	public long getUserConfigId() {
+//		return userConfigId;
+//	}
+//
+//	public void setUserConfigId(long userConfigId) {
+//		this.userConfigId = userConfigId;
+//	}
 
 	@Override
 	public String toString() {
-		return "User [id=" + id + ", name=" + name + ", password=" + password + ", type=" + type + ", salt=" + salt + ", email=" + email + ", mobile=" + mobile + ", deleted=" + deleted + ", enable="
+		return "User [uid=" + uid + ", name=" + name + ", password=" + password + ", type=" + type + ", salt=" + salt + ", email=" + email + ", mobile=" + mobile + ", deleted=" + deleted + ", enable="
 				+ enable + ", code=" + code + "]";
 	}
 

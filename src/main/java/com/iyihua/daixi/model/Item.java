@@ -1,13 +1,21 @@
 package com.iyihua.daixi.model;
 
+import java.io.Serializable;
+import java.util.List;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.Transient;
+
 
 @Entity
-public class Item {
+public class Item 
+//	extends Page<Item> 
+	implements Serializable {
 	
+	private static final long serialVersionUID = -6493089122220140602L;
 	@Id
 	@GeneratedValue
     private Integer iid;
@@ -16,7 +24,11 @@ public class Item {
 	@Column
     private Integer piid;
 	@Column
-    private Byte type;
+    private Integer type;
+	@Column
+    private Integer status;
+	@Transient
+	List<Point> points;
 
     public Integer getIid() {
         return iid;
@@ -42,11 +54,28 @@ public class Item {
         this.piid = piid;
     }
 
-    public Byte getType() {
+    public Integer getType() {
         return type;
     }
 
-    public void setType(Byte type) {
+    public void setType(Integer type) {
         this.type = type;
     }
+
+	public Integer getStatus() {
+		return status;
+	}
+
+	public void setStatus(Integer status) {
+		this.status = status;
+	}
+
+	public List<Point> getPoints() {
+		return points;
+	}
+
+	public void setPoints(List<Point> points) {
+		this.points = points;
+	}
+    
 }

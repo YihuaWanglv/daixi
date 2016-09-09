@@ -1,25 +1,24 @@
 (function(angular) {
 
-  var CategoryFactory = function($resource) {
-    return $resource('/manager/category/:categoryId', {
-      categoryId: '@categoryId'
-    }, {
-      update: {
-        method: "PUT"
-      },
-      remove: {
-        method: "DELETE"
-      }
-    });
-  };
+  // var CategoryFactory = function($resource) {
+  //   return $resource('/manager/category/:categoryId', {
+  //     categoryId: '@categoryId'
+  //   }, {
+  //     update: {
+  //       method: "PUT"
+  //     },
+  //     remove: {
+  //       method: "DELETE"
+  //     }
+  //   });
+  // };
+  // CategoryFactory.$inject = ['$resource'];
+  // angular.module("manager.services").factory("Category", CategoryFactory);
 
-  // ItemFactory.$inject = ['$resource'];
-  CategoryFactory.$inject = ['$resource'];
-  // angular.module("manager.services").factory("Item", ItemFactory);
-  angular.module("manager.services").factory("Category", CategoryFactory);
-  angular.module('manager.services').factory('Project', function($resource) {
-    return $resource('/manager/project/:projectId', {
-      projectId: '@projectId'
+
+  angular.module('manager.services').factory('Item', function($resource) {
+    return $resource('/item/list/wait', {
+      
     }, {
       update: {
         method: "PUT"
@@ -29,9 +28,10 @@
       }
     });
   });
-  angular.module('manager.services').factory('Tag', function($resource) {
-    return $resource('/manager/tag/:tagId', {
-      tagId: '@tagId'
+
+  angular.module('manager.services').factory('Point', function($resource) {
+    return $resource('/point/:iid', {
+      iid: '@iid'
     }, {
       update: {
         method: "PUT"
@@ -41,16 +41,5 @@
       }
     });
   });
-  angular.module('manager.services').factory('Location', function($resource) {
-    return $resource('/manager/location/:locationId', {
-      locationId: '@locationId'
-    }, {
-      update: {
-        method: "PUT"
-      },
-      remove: {
-        method: "DELETE"
-      }
-    });
-  });
+  
 }(angular));

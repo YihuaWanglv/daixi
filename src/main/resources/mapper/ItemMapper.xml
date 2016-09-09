@@ -6,9 +6,10 @@
     <result column="name" property="name" jdbcType="VARCHAR" />
     <result column="piid" property="piid" jdbcType="INTEGER" />
     <result column="type" property="type" jdbcType="TINYINT" />
+    <result column="status" property="status" jdbcType="TINYINT" />
   </resultMap>
   <sql id="Base_Column_List" >
-    iid, name, piid, type
+    iid, name, piid, type, status
   </sql>
   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
     select 
@@ -22,9 +23,9 @@
   </delete>
   <insert id="insert" parameterType="com.iyihua.daixi.model.Item" >
     insert into item (iid, name, piid, 
-      type)
+      type, status)
     values (#{iid,jdbcType=INTEGER}, #{name,jdbcType=VARCHAR}, #{piid,jdbcType=INTEGER}, 
-      #{type,jdbcType=TINYINT})
+      #{type,jdbcType=TINYINT}, #{status,jdbcType=TINYINT})
   </insert>
   <insert id="insertSelective" parameterType="com.iyihua.daixi.model.Item" >
     insert into item
@@ -41,6 +42,9 @@
       <if test="type != null" >
         type,
       </if>
+      <if test="status != null" >
+        status,
+      </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides="," >
       <if test="iid != null" >
@@ -54,6 +58,9 @@
       </if>
       <if test="type != null" >
         #{type,jdbcType=TINYINT},
+      </if>
+      <if test="status != null" >
+        #{status,jdbcType=TINYINT},
       </if>
     </trim>
   </insert>
@@ -69,6 +76,9 @@
       <if test="type != null" >
         type = #{type,jdbcType=TINYINT},
       </if>
+      <if test="status != null" >
+        status = #{status,jdbcType=TINYINT},
+      </if>
     </set>
     where iid = #{iid,jdbcType=INTEGER}
   </update>
@@ -76,7 +86,40 @@
     update item
     set name = #{name,jdbcType=VARCHAR},
       piid = #{piid,jdbcType=INTEGER},
-      type = #{type,jdbcType=TINYINT}
+      type = #{type,jdbcType=TINYINT},
+      status = #{status,jdbcType=TINYINT}
     where iid = #{iid,jdbcType=INTEGER}
   </update>
+  
+  <sql id="findItemsByParamsCommon">
+		from item i where 1=1
+		<if test="name != null">
+			and i.name = #{name}
+		</if>
+		<if test="piid != null">
+			and i.piid = #{piid}
+		</if>
+		<if test="type != null">
+			and i.type = #{type}
+		</if>
+		<if test="status != null">
+			and i.status = #{status}
+		</if>
+	</sql>
+	<select id="findItemsByParams" parameterType="com.iyihua.daixi.model.Item"
+		resultMap="BaseResultMap">
+		select
+		i.*
+		<include refid="findItemsByParamsCommon" />
+		<!-- 
+		<if test="start != null and size != null and page != null and page > 0 and start > -1">
+			limit #{start}, #{size}
+		</if>
+		 -->
+	</select>
+	<select id="countItemsByParams" parameterType="com.iyihua.daixi.model.Item"
+		resultType="Integer">
+		select count(*)
+		<include refid="findItemsByParamsCommon" />
+	</select>
 </mapper>

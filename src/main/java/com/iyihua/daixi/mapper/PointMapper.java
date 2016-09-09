@@ -1,5 +1,7 @@
 package com.iyihua.daixi.mapper;
 
+import java.util.List;
+
 import org.apache.ibatis.annotations.Mapper;
 
 import com.iyihua.daixi.model.Point;
@@ -17,4 +19,6 @@ public interface PointMapper {
     int updateByPrimaryKeySelective(Point record);
 
     int updateByPrimaryKey(Point record);
+    
+    List<Point> findByParams(Point point);
 }

@@ -8,7 +8,7 @@ public interface PointRemote {
 
 	Point getById(Integer id);
 	
-	void save(Point point);
+	void save(Point point, Boolean isAllField);
 	
 	List<Point> getListByItemId(Integer id);
 }
