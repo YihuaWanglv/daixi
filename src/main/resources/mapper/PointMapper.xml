@@ -9,6 +9,7 @@
     <result column="scores" property="scores" jdbcType="TINYINT" />
     <result column="title" property="title" jdbcType="VARCHAR" />
   </resultMap>
+  
   <sql id="Base_Column_List" >
     pid, iid, description, type, scores, title
   </sql>
@@ -136,4 +137,5 @@
 		select count(*)
 		<include refid="findByParamsCommon" />
 	</select>
+	
 </mapper>

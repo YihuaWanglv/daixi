@@ -17,12 +17,12 @@
       <div class="alert alert-info" role="alert" ng-hide="points &amp;&amp; points.length > 0">
         There are no points yet.
       </div>
-      <form class="form-horizontal" role="form" ng-submit="addPoint(newPoint)">
+      <form class="form-horizontal" role="form">
         <div ng-repeat="point in points">
           <div class="form-group">
             <div class="col-xs-9">
               <label>
-                <input type="text" class="form-control" ng-model="point.title" ng-if="point.editting"/><span ng-if="!point.editting">{{point.title}}</span>
+                <span>{{point.title}}</span>
               </label>
             </div>
             <div class="col-xs-3">
@@ -35,8 +35,15 @@
             </div>
           </div>
           <div class="form-group">
-            <div class="alert alert-info" role="alert" ng-if="point.editting">
-              <span>{{point.description}}</span>
+            <div class="col-sm-12">
+              <div class="alert alert-info" role="alert" ng-if="point.editting">
+                <span>{{point.description}}</span>
+              </div>
+            </div>
+          </div>
+          <div class="form-group">
+            <div class="col-sm-12">
+              <textarea placeholder="You can enter your results or outcomes here..." class="form-control" ng-if="point.editting" style="height: 200px;" ng-model="point.detail"></textarea>
             </div>
           </div>
         </div>

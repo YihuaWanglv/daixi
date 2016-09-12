@@ -3,6 +3,7 @@ package com.iyihua.daixi.model;
 import javax.persistence.Column;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.Transient;
 
 public class UserPoint {
 	
@@ -10,15 +11,26 @@ public class UserPoint {
 	@GeneratedValue
     private Integer upid;
 	@Column
-    private Integer uid;
+    private Long uid;
 	@Column
     private Integer pid;
 	@Column
     private String detail;
 	@Column
-    private Byte option;
+    private Integer options;
 	@Column
-    private Byte score;
+    private Integer score;
+	
+	@Transient
+    private Integer iid;
+	@Transient
+    private String description;
+	@Transient
+    private Integer type;
+	@Transient
+    private Integer scores;
+	@Transient
+    private String title;
 
     public Integer getUpid() {
         return upid;
@@ -44,28 +56,68 @@ public class UserPoint {
         this.detail = detail;
     }
 
-    public Byte getOption() {
-        return option;
+    public Integer getOptions() {
+        return options;
     }
 
-    public void setOption(Byte option) {
-        this.option = option;
+    public void setOption(Integer options) {
+        this.options = options;
     }
 
-    public Byte getScore() {
+    public Integer getScore() {
         return score;
     }
 
-    public void setScore(Byte score) {
+    public void setScore(Integer score) {
         this.score = score;
     }
 
-	public Integer getUid() {
+	public Long getUid() {
 		return uid;
 	}
 
-	public void setUid(Integer uid) {
+	public void setUid(Long uid) {
 		this.uid = uid;
+	}
+
+	public Integer getIid() {
+		return iid;
+	}
+
+	public void setIid(Integer iid) {
+		this.iid = iid;
+	}
+
+	public String getDescription() {
+		return description;
+	}
+
+	public void setDescription(String description) {
+		this.description = description;
+	}
+
+	public Integer getType() {
+		return type;
+	}
+
+	public void setType(Integer type) {
+		this.type = type;
+	}
+
+	public Integer getScores() {
+		return scores;
+	}
+
+	public void setScores(Integer scores) {
+		this.scores = scores;
+	}
+
+	public String getTitle() {
+		return title;
+	}
+
+	public void setTitle(String title) {
+		this.title = title;
 	}
     
 }
