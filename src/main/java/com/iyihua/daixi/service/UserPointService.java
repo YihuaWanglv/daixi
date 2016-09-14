@@ -29,7 +29,7 @@ public class UserPointService implements UserPointRemote {
 	}
 
 	@Override
-	public void save(UserPoint up, Boolean isAllField) {
+	public UserPoint save(UserPoint up, Boolean isAllField) {
 		if (up.getUpid() == null) {
 			if (isAllField) {
 				userPointMapper.insert(up);
@@ -43,6 +43,7 @@ public class UserPointService implements UserPointRemote {
 				userPointMapper.updateByPrimaryKeySelective(up);
 			}
 		}
+		return up;
 	}
 
 	@Override

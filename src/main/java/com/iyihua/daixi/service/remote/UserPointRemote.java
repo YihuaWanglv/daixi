@@ -11,7 +11,7 @@ public interface UserPointRemote {
 	
 	List<UserPoint> getListByUserAndPoint(Integer userId, Integer pointId);
 	
-	void save(UserPoint up, Boolean isAllField);
+	UserPoint save(UserPoint up, Boolean isAllField);
 	
 	UserPoint getById(Integer id);
 	

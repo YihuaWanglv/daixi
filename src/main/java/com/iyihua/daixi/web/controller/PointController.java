@@ -29,29 +29,6 @@ public class PointController {
 	@Autowired UserPointRemote userPointService;
 	@Autowired LoginSessionManager loginSessionManager;
 	
-//	@RequestMapping(value = "/list/{iid}", method = RequestMethod.GET)
-//	@ResponseBody
-//	public JsonObject listPoint(@PathVariable Integer iid) {
-//		List<Point> points = pointService.getListByItemId(iid);
-//		return null;
-//	}
-//	
-//	@RequestMapping(value = "/{pid}", method = RequestMethod.GET)
-//	@ResponseBody
-//	public JsonObject getPoint(@PathVariable Integer pid) {
-//		Point point = pointService.getById(pid);
-//		return null;
-//	}
-//	
-//	@RequestMapping(value = "/{pid}", method = RequestMethod.PUT)
-//	@ResponseBody
-//	public JsonObject savePoint(@RequestBody Point point, @PathVariable Integer pid) {
-//		
-//		point.setPid(pid);
-//		
-//		pointService.save(point, false);
-//		return new JsonObject();
-//	}
 	
 	@RequestMapping(value = "/{iid}", method = RequestMethod.GET)
 	public List<UserPointView> list(@PathVariable Integer iid) {

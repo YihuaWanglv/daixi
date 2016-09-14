@@ -1,6 +1,8 @@
 package com.iyihua.daixi.web.controller;
+import java.util.ArrayList;
 import java.util.List;
 
+import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -14,6 +16,8 @@ import com.iyihua.daixi.model.Point;
 import com.iyihua.daixi.model.base.JsonObject;
 import com.iyihua.daixi.service.remote.ItemRemote;
 import com.iyihua.daixi.service.remote.PointRemote;
+import com.iyihua.daixi.web.dto.ItemView;
+import com.iyihua.daixi.web.dto.PointView;
 
 
 
@@ -24,39 +28,51 @@ public class AdminController {
 	@Autowired PointRemote pointService;
 	@Autowired ItemRemote itemService;
 	
-	@RequestMapping(value = "/item/{iid}", method = RequestMethod.GET)
+	@RequestMapping(value = "/item", method = RequestMethod.GET)
 	@ResponseBody
-	public JsonObject listItem(@PathVariable Integer iid) {
-		if (iid == null) {
-			iid = 0;
+	public List<ItemView> listItem(Integer piid) {
+		if (piid == null) {
+			piid = 0;
 		}
-		List<Item> items = itemService.getListByParentId(iid);
-		return null;
+		List<ItemView> ivs = new ArrayList<ItemView>();
+		List<Item> items = itemService.getListByParentId(piid);
+		for (Item item : items) {
+			ItemView iv = new ItemView();
+			BeanUtils.copyProperties(item, iv);
+			ivs.add(iv);
+		}
+		return ivs;
 	}
 	
 	@RequestMapping(value = "/item", method = RequestMethod.POST)
 	@ResponseBody
-	public JsonObject addPoint(Item item) {
+	public Item addItem(Item item) {
 		
 		itemService.save(item, null);
-		return new JsonObject();
+		return item;
 	}
 	
 	@RequestMapping(value = "/item/{iid}", method = RequestMethod.PUT)
 	@ResponseBody
-	public JsonObject updatePoint(@RequestBody Item item, @PathVariable Integer iid) {
+	public ItemView updateItem(@RequestBody ItemView item, @PathVariable Integer iid) {
 		
 		item.setIid(iid);
 		
 		itemService.save(item, false);
-		return new JsonObject();
+		return item;
 	}
 	
 	@RequestMapping(value = "/point/{iid}", method = RequestMethod.GET)
 	@ResponseBody
-	public JsonObject listPoint(@PathVariable Integer iid) {
+	public List<PointView> listPoint(@PathVariable Integer iid) {
+		List<PointView> pvs = new ArrayList<PointView>();
 		List<Point> points = pointService.getListByItemId(iid);
-		return null;
+		for (Point p : points) {
+			PointView pv = new PointView();
+			BeanUtils.copyProperties(p, pv);
+			pvs.add(pv);
+		}
+		return pvs;
 	}
 	
 	@RequestMapping(value = "/point", method = RequestMethod.POST)

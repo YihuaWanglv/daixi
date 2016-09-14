@@ -36,14 +36,14 @@
 		delete from user_point
 		where upid = #{upid,jdbcType=INTEGER}
 	</delete>
-	<insert id="insert" parameterType="com.iyihua.daixi.model.UserPoint">
+	<insert id="insert" parameterType="com.iyihua.daixi.model.UserPoint" useGeneratedKeys="true" keyProperty="upid">
 		insert into user_point (upid, uid, pid, detail,
 		options, score)
 		values (#{upid,jdbcType=INTEGER}, #{uid,jdbcType=BIGINT}, #{pid,jdbcType=INTEGER},
 		#{detail,jdbcType=VARCHAR},
 		#{options,jdbcType=TINYINT}, #{score,jdbcType=TINYINT})
 	</insert>
-	<insert id="insertSelective" parameterType="com.iyihua.daixi.model.UserPoint">
+	<insert id="insertSelective" parameterType="com.iyihua.daixi.model.UserPoint" useGeneratedKeys="true" keyProperty="upid">
 		insert into user_point
 		<trim prefix="(" suffix=")" suffixOverrides=",">
 			<if test="upid != null">
