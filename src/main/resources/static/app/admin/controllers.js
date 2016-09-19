@@ -4,6 +4,7 @@
     //   $scope.items = response ? response : [];
     // });
     $scope.piid = 0;
+    
     $http.get('/admin/item',{params: {piid:$scope.piid}})
       .success(function(data, status, headers, config){
         console.log(data);
@@ -57,27 +58,28 @@
   var PointController = function($scope, Point, $location) {
     $scope.location = $location;
     $scope.iid = ($location.search()).iid;
-
+    $scope.newScores = 1;
     Point.query({iid: $scope.iid}, function(response) {
       $scope.points = response ? response : [];
     });
     $scope.addPoint = function(name, iid) {
       new Point({
         title: $scope.newTitle,
-        description: $scope.description,
+        description: $scope.newDescription,
+        scores: $scope.newScores,
         iid: $scope.iid
       }).$save(function(point) {
         $scope.points.push(point);
       });
       $scope.newTitle = "";
       $scope.newDescription = "";
+      $scope.newScores = 1;
     };
     $scope.updatePoint = function(point) {
       console.log(point);
       point.$update(function(point) {
-        console.log('newPoint');
         console.log(point);
-        //$scope.points.push(point);
+        // $scope.points.push(point);
       });
     };
     $scope.deletePoint = function(point) {

@@ -75,22 +75,22 @@ public class AdminController {
 		return pvs;
 	}
 	
-	@RequestMapping(value = "/point", method = RequestMethod.POST)
+	@RequestMapping(value = "/point/{iid}", method = RequestMethod.POST)
 	@ResponseBody
-	public JsonObject addPoint(Point point) {
+	public Point addPoint(@RequestBody Point point, @PathVariable Integer iid) {
 		
 		pointService.save(point, null);
-		return new JsonObject();
+		return point;
 	}
 	
 	@RequestMapping(value = "/point/{pid}", method = RequestMethod.PUT)
 	@ResponseBody
-	public JsonObject updatePoint(@RequestBody Point point, @PathVariable Integer pid) {
+	public Point updatePoint(@RequestBody Point point, @PathVariable Integer pid) {
 		
-		point.setPid(pid);
+//		point.setPid(pid);
 		
 		pointService.save(point, false);
-		return new JsonObject();
+		return point;
 	}
 
 }

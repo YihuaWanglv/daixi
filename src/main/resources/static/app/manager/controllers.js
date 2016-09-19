@@ -45,7 +45,7 @@
       point.$update(function(point) {
         console.log('newPoint');
         console.log(point);
-        //$scope.points.push(point);
+        // $scope.points.push(point);
       });
     };
     $scope.deletePoint = function(point) {
