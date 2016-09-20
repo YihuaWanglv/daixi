@@ -132,4 +132,21 @@
 			and p.type = #{type}
 		</if>
 	</select>
+	<sql id="findByParamsCommon">
+		from user_point up left join point p on up.pid=p.pid where 1=1
+		<if test="uid != null">
+			and up.uid = #{uid}
+		</if>
+		<if test="pid != null">
+			and up.pid = #{pid}
+		</if>
+		<if test="iid != null">
+			and up.iid = #{iid}
+		</if>
+	</sql>
+	<select id="findByParams" parameterType="com.iyihua.daixi.model.UserPoint"
+		resultMap="UserPointDetailMap">
+		select up.*, p.iid, p.description, p.type, p.scores, p.title
+		<include refid="findByParamsCommon" />
+	</select>
 </mapper>

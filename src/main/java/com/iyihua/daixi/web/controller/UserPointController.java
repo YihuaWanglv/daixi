@@ -37,7 +37,11 @@ public class UserPointController {
 		
 		if (upid != null && upid > 0) {
 			up = userPointService.getById(upid);
+		} else {
+			Assert.notNull(pid, "pid must not null!");
+			up = userPointService.getUserPointByIidAndUid(pid, uid);
 		}
+		
 		if (up == null) {
 			p = pointService.getById(pid);
 			Assert.notNull(uid, "pid为[" + pid +"]的Point不存在.");

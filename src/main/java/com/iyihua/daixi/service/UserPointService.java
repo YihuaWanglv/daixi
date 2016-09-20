@@ -48,13 +48,32 @@ public class UserPointService implements UserPointRemote {
 
 	@Override
 	public UserPoint getById(Integer id) {
-		// TODO Auto-generated method stub
-		return null;
+		return userPointMapper.selectByPrimaryKey(id);
 	}
 
 	@Override
 	public List<UserPoint> findUserPoints(PointQuery query) {
 		return userPointMapper.findUserPoints(query);
+	}
+
+	@Override
+	public List<UserPoint> findByParams(UserPoint up) {
+		return userPointMapper.findByParams(up);
+	}
+
+	@Override
+	public UserPoint getUserPointByIidAndUid(Integer pid, Long uid) {
+		UserPoint up = new UserPoint();
+		up.setPid(pid);
+		up.setUid(uid);
+		List<UserPoint> userPoints = userPointMapper.findByParams(up);
+		if (userPoints != null && userPoints.size() > 0) {
+			if (userPoints.size() > 1) {
+				throw new RuntimeException("pid[" +pid+"],uid["+uid+"]的数据多余1条，数据异常.");
+			}
+			return userPoints.get(0);
+		}
+		return null;
 	}
 
 }

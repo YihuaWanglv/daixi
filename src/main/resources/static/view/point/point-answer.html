@@ -35,7 +35,15 @@
           <div class="col-xs-12">
             <textarea placeholder="Enter the answer..." class="form-control" style="height: 200px;" ng-model="point.detail"></textarea>
           </div>
-        </div>        
+        </div>
+        <div class="form-group">
+          <div class="col-xs-12">
+            <div>
+              <div ckeditor="options" ng-model="detail" ready="onReady()"></div>
+            </div>
+          </div>
+          
+        </div>     
         <div class="form-group">
           <div class="col-sm-12">
             <button class="btn btn-primary" type="submit" title="submit">Submit</button>
@@ -49,6 +57,9 @@
     <script type="text/javascript" src="/bower_components/lodash/dist/lodash.min.js"></script>
     <script type="text/javascript" src="/bower_components/jquery/dist/jquery.min.js"></script>
     <script type="text/javascript" src="/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+    <!-- <script type="text/javascript" src="/bower_components/angular.js"></script> -->
+    <script type="text/javascript" src="/bower_components/ckeditor/ckeditor.js"></script>
+    <script type="text/javascript" src="/bower_components/angular-ckeditor/angular-ckeditor.js"></script>
     <script type="text/javascript" src="/app/common/page-layout-init.js"></script>
     <script type="text/javascript" src="/app/point/point.js"></script>
     <script type="text/javascript" src="/app/point/controllers.js"></script>

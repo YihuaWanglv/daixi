@@ -16,4 +16,8 @@ public interface UserPointRemote {
 	UserPoint getById(Integer id);
 	
 	List<UserPoint> findUserPoints(PointQuery query);
+	
+	List<UserPoint> findByParams(UserPoint up);
+	
+	UserPoint getUserPointByIidAndUid(Integer pid, Long uid);
 }

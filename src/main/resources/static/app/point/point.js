@@ -1,5 +1,5 @@
 (function(angular) {
-  angular.module("point.controllers", []);
+  angular.module("point.controllers", ['ckeditor']);
   angular.module("point.services", []);
   angular.module("point", ["ngResource", "point.controllers", "point.services"]
   	, function($locationProvider) {

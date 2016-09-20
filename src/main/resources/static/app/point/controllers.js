@@ -7,6 +7,7 @@
 
     UserPoint.get({pid: $scope.pid}, function(response) {
       $scope.point = response ? response : [];
+      console.log($scope.point);
     });
     $scope.answer = function(point) {
       console.log(point);
@@ -18,6 +19,14 @@
     $scope.changeButtonFlag = function(point) {
       $scope.edit = (!$scope.edit);
     }
+    $scope.options = {
+      language: 'en',
+      allowedContent: true,
+      entities: false
+    };
+    $scope.onReady = function () {
+      // ...
+    };
   };
   
   UserPointController.$inject = ['$scope', 'UserPoint', '$location'];

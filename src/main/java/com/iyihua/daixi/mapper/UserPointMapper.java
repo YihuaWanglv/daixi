@@ -21,4 +21,6 @@ public interface UserPointMapper {
     int updateByPrimaryKey(UserPoint record);
     
     List<UserPoint> findUserPoints(PointQuery query);
+    
+    List<UserPoint> findByParams(UserPoint up);
 }
