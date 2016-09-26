@@ -22,6 +22,7 @@
     $scope.options = {
       language: 'en',
       allowedContent: true,
+      filebrowserImageUploadUrl: '/upload',
       entities: false
     };
     $scope.onReady = function () {
